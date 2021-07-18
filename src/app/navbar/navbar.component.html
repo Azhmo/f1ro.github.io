@@ -3,11 +3,18 @@
     <span class="logo-wrapper">
       <a class="navbar-brand" routerLink="/">European Formula Racing</a>
     </span>
-    <a class="nav-link" routerLink="calendar" routerLinkActive="active-link"><span>Calendar</span></a>
-    <a class="nav-link" routerLink="standings" routerLinkActive="active-link"><span>Driver Standings</span></a>
-    <a class="nav-link" routerLink="constructor-standings" routerLinkActive="active-link"><span>Constructor
+    <select class="tierSelect" [(ngModel)]="tierFilter" (ngModelChange)="changeQuery()">
+      <option *ngFor="let tier of ['gold', 'silver']" [ngValue]="tier">{{tier | titlecase}}</option>
+    </select>
+    <a class="nav-link" routerLink="calendar" [queryParams]="{tier: tierFilter}"
+      routerLinkActive="active-link"><span>Calendar</span></a>
+    <a class="nav-link" routerLink="standings" [queryParams]="{tier: tierFilter}"
+      routerLinkActive="active-link"><span>Driver Standings</span></a>
+    <a class="nav-link" routerLink="constructor-standings" [queryParams]="{tier: tierFilter}"
+      routerLinkActive="active-link"><span>Constructor
         Standings</span></a>
-    <a class="nav-link" routerLink="penalties" routerLinkActive="active-link"><span>Penalties</span></a>
+    <a class="nav-link" routerLink="penalties" [queryParams]="{tier: tierFilter}"
+      routerLinkActive="active-link"><span>Penalties</span></a>
     <!-- <a class="nav-link" style="color: black" routerLink="calendar-next-season">Next Season</a> -->
   </div>
 </nav>

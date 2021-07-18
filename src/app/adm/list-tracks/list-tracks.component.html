@@ -1,5 +1,8 @@
 <div class='wrapper'>
-  <div *ngFor="let track of tracks">
+  <select class="teamSelect" [(ngModel)]="tierFilter" (ngModelChange)="ngOnInit()">
+    <option *ngFor="let tier of ['gold', 'silver']" [ngValue]="tier">{{tier | titlecase}}</option>
+  </select>
+  <div *ngFor="let track of tracks ">
     <p>{{track.name}}<span>{{track.flag}}</span></p><span><input matInput type="datetime-local"
         [ngModel]="track.date | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="track.date = dateChanged($event)"></span>
     <span><button (click)="save(track)">Save</button><button (click)="clearDate(track)">Clear date</button></span>

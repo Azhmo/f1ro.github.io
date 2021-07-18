@@ -1,77 +1,99 @@
 [{
   "name": "Australia",
-  "flag": "🇦🇺"
+  "flag": "🇦🇺",
+  "tier": "gold"
 }, {
   "name": "Bahrain",
   "flag": "🇧🇭",
-  "date": "7 May 2021 17:00"
+  "date": "7 May 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Vietnam",
-  "flag": "🇻🇳"
+  "flag": "🇻🇳",
+  "tier": "gold"
 }, {
   "name": "China",
-  "flag": "🇨🇳"
+  "flag": "🇨🇳",
+  "tier": "gold"
 }, {
   "name": "Netherlands",
-  "flag": "🇳🇱"
+  "flag": "🇳🇱",
+  "tier": "gold"
 }, {
   "name": "Spain",
   "flag": "🇪🇸",
-  "date": "18 June 2021 17:00"
+  "date": "18 June 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Canada",
-  "flag": "🇨🇦"
+  "flag": "🇨🇦",
+  "tier": "gold"
 }, {
   "name": "France",
-  "flag": "🇫🇷"
+  "flag": "🇫🇷",
+  "tier": "gold"
 }, {
   "name": "Austria",
   "flag": "🇦🇹",
-  "date": "21 May 2021 17:00"
+  "date": "21 May 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Italy",
   "flag": "🇮🇹",
-  "date": "11 June 2021 17:00"
+  "date": "11 June 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Monaco",
   "flag": "🇲🇨",
-  "date": "25 June 2021 17:00"
+  "date": "25 June 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Belgium",
   "flag": "🇧🇪",
-  "date": "2 July 2021 17:00"
+  "date": "2 July 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Azerbaijan",
   "flag": "🇦🇿",
-  "date": "9 July 2021 17:00"
+  "date": "9 July 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Britain",
   "flag": "🇬🇧",
-  "date": "14 May 2021 17:00"
+  "date": "14 May 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Singapore",
-  "flag": "🇸🇬"
+  "flag": "🇸🇬",
+  "tier": "gold"
 }, {
   "name": "Russia",
-  "flag": "🇷🇺"
+  "flag": "🇷🇺",
+  "tier": "gold"
 }, {
   "name": "Hungary",
   "flag": "🇭🇺",
-  "date": "4 June 2021 17:00"
+  "date": "4 June 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Japan",
-  "flag": "🇯🇵"
+  "flag": "🇯🇵",
+  "tier": "gold"
 }, {
   "name": "USA",
-  "flag": "🇺🇸"
+  "flag": "🇺🇸",
+  "tier": "gold"
 }, {
   "name": "Mexico",
-  "flag": "🇲🇽"
+  "flag": "🇲🇽",
+  "tier": "gold"
 }, {
   "name": "Brazil",
   "flag": "🇧🇷",
-  "date": "28 May 2021 17:00"
+  "date": "28 May 2021 17:00",
+  "tier": "gold"
 }, {
   "name": "Abu Dhabi",
-  "flag": "🇦🇪"
+  "flag": "🇦🇪",
+  "tier": "gold"
 }]

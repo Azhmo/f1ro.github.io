@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { F1CalendarTrack } from '../common';
+import { ActivatedRoute } from '@angular/router';
+import { EFRTier, F1CalendarTrack } from '../common';
 import { HttpService } from '../http/http.service';
 
 @Component({
@@ -10,11 +11,18 @@ import { HttpService } from '../http/http.service';
 })
 export class CalendarComponent implements OnInit {
   calendarTracks: F1CalendarTrack[];
-  constructor(private httpService: HttpService) { }
+  tierFilter: EFRTier;
+
+  constructor(private httpService: HttpService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.tierFilter = params['tier'];
+      this.ngOnInit();
+    });
+  }
 
   ngOnInit(): void {
     this.httpService.getTracks().subscribe((response) => {
-      this.calendarTracks = response.filter((track) => !!track.date).map((track) => {
+      this.calendarTracks = response.filter((track) => !!track.date).filter((track) => track.tier === this.tierFilter).map((track) => {
         return {
           ...track,
           date: new Date(track.date),

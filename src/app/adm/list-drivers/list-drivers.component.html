@@ -2,4 +2,5 @@
   <div *ngFor="let driver of players">
     <a href='adm/driver/{{driver._id}}'>{{driver.name}}</a>
   </div>
+  <button (click)="reset()">Reset</button>
 </div>

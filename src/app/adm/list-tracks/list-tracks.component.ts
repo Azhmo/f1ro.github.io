@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { F1CalendarTrack } from 'src/app/common';
+import { EFRTier, F1CalendarTrack } from 'src/app/common';
 import { HttpService } from 'src/app/http/http.service';
 
 @Component({
@@ -10,11 +10,15 @@ import { HttpService } from 'src/app/http/http.service';
 export class ListTracksComponent implements OnInit {
   tracks: F1CalendarTrack[];
   date: Date;
+  tierFilter: EFRTier;
 
-  constructor(private httpService: HttpService) { this.date = new Date(); }
+  constructor(private httpService: HttpService) {
+    this.date = new Date();
+    this.tierFilter = 'gold';
+  }
 
   ngOnInit(): void {
-    this.httpService.getTracks().subscribe((response) => this.tracks = response)
+    this.httpService.getTracks().subscribe((response) => this.tracks = response.filter((track) => track.tier === this.tierFilter))
   }
 
   dateChanged(eventDate: string): Date | null {

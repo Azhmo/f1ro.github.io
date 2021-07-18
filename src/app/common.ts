@@ -39,6 +39,7 @@ export interface F1TeamRank {
   name: F1Team;
   gain: number;
   points: number;
+  tier: EFRTier;
 }
 
 export interface F1Track {
@@ -47,6 +48,7 @@ export interface F1Track {
 }
 export interface F1CalendarTrack extends F1Track {
   date?: Date;
+  tier: EFRTier;
 }
 
 export type EFRTier = 'gold' | 'silver';

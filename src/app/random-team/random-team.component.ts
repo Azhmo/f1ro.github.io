@@ -15,56 +15,66 @@ export class RandomTeamComponent implements OnInit {
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
     {
       name: '-',
       gain: 0,
-      points: 0
+      points: 0,
+      tier: 'gold',
     },
-];
+  ];
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.getTeamsRank();

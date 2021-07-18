@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http/http.service';
-import { PlayerRank } from '../common';
+import { EFRTier, PlayerRank } from '../common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-standings',
@@ -11,12 +12,19 @@ import { PlayerRank } from '../common';
 export class StandingsComponent implements OnInit {
   players: PlayerRank[];
   loading: boolean;
-  constructor(private httpService: HttpService) { }
+  tierFilter: EFRTier;
+
+  constructor(private httpService: HttpService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.tierFilter = params['tier'];
+      this.ngOnInit();
+    });
+  }
 
   ngOnInit(): void {
     this.loading = true
     this.httpService.getPlayersRank().subscribe((response) => {
-      this.players = this.sortByPoints(response);
+      this.players = this.sortByPoints(response.filter((player) => player.tier === this.tierFilter));
     }, (err) => console.log(err), () => this.loading = false);
   }
 

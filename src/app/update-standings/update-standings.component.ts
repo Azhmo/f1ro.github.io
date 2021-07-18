@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import { forkJoin } from 'rxjs';
-import { F1Team, PlayerRank, F1TeamRank } from '../common';
+import { F1Team, PlayerRank, F1TeamRank, EFRTier } from '../common';
 import { HttpService } from '../http/http.service';
 
 interface Result {
@@ -24,16 +24,22 @@ export class UpdateStandingsComponent implements OnInit {
   oldPlayers: PlayerRank[];
   teams: F1TeamRank[];
   oldTeams: F1TeamRank[];
+  tierFilter: EFRTier;
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private httpService: HttpService, private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.tierFilter = params['tier'];
+      this.ngOnInit();
+    });
+  }
 
   ngOnInit(): void {
     this.httpService.getTeamsRank().subscribe((response) => {
-      this.teams = this.sortByPoints(response);
+      this.teams = this.sortByPoints(response.filter((team) => team.tier === this.tierFilter));
       this.oldTeams = JSON.parse(JSON.stringify(this.teams));
     });
     this.httpService.getPlayersRank().subscribe((response) => {
-      this.players = this.sortByPoints(response);
+      this.players = this.sortByPoints(response.filter((player) => player.tier === this.tierFilter));
       this.oldPlayers = JSON.parse(JSON.stringify(this.players));
     });
 
@@ -237,7 +243,7 @@ export class UpdateStandingsComponent implements OnInit {
     });
   }
 
-  generatePlayerStandings() {
+  generateStandings() {
     this.sortByPoints(this.players).forEach((player, index) => {
       const oldPlayerIndex = this.oldPlayers.findIndex(
         (oldPlayer) => oldPlayer.name === player.name
@@ -259,35 +265,6 @@ export class UpdateStandingsComponent implements OnInit {
 
     forkJoin([this.httpService.addDrivers(this.players), this.httpService.addTeams(this.teams)]).subscribe(
       () => this.router.navigate(['/standings']));
-  }
-
-  generateTeamStandings() {
-    this.sortByPoints(this.teams).forEach((team, index) => {
-      const oldTeamIndex = this.oldTeams.findIndex(
-        (oldTeam) => oldTeam.name === team.name
-      );
-      team.gain = oldTeamIndex - index;
-    });
-
-
-
-    this.copyStringToClipboard(JSON.stringify(this.teams));
-  }
-
-  copyStringToClipboard(str) {
-    // Create new element
-    let el = document.createElement('textarea');
-    // Set value (string to be copied)
-    el.value = str;
-    // Set non-editable to avoid focus and move outside of view
-    el.setAttribute('readonly', '');
-    document.body.appendChild(el);
-    // Select text inside element
-    el.select();
-    // Copy text to clipboard
-    document.execCommand('copy');
-    // Remove temporary element
-    document.body.removeChild(el);
   }
 
   saveStandings() {

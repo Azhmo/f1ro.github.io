@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http/http.service';
-import { PlayerRank, F1TeamRank } from '../common';
+import { PlayerRank, F1TeamRank, EFRTier } from '../common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-random',
@@ -10,6 +11,7 @@ import { PlayerRank, F1TeamRank } from '../common';
 export class RandomTeamComponent implements OnInit {
   players: PlayerRank[];
   teams: F1TeamRank[];
+  tierFilter: EFRTier;
 
   noTeams: F1TeamRank[] = [
     {
@@ -74,18 +76,23 @@ export class RandomTeamComponent implements OnInit {
     },
   ];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.tierFilter = params['tier'];
+      this.ngOnInit();
+    });
+  }
 
   ngOnInit(): void {
     this.getTeamsRank();
     this.httpService.getPlayersRank().subscribe((response) => {
-      this.players = response;
+      this.players = response.filter((player) => player.tier === this.tierFilter);
     });
   }
 
   getTeamsRank() {
     this.httpService.getTeamsRank().subscribe((response) => {
-      this.teams = response;
+      this.teams = response.filter((team) => team.tier === this.tierFilter);
     });
   }
 

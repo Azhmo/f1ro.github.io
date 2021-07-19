@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top">
   <div class="container">
     <span class="logo-wrapper">
-      <a class="navbar-brand" routerLink="/">European Formula Racing</a>
+      <a class="navbar-brand" routerLink="/" [queryParams]="{tier: tierFilter}">European Formula Racing</a>
     </span>
     <select class="tierSelect" [(ngModel)]="tierFilter" (ngModelChange)="changeQuery()">
       <option *ngFor="let tier of ['gold', 'silver']" [ngValue]="tier">{{tier | titlecase}}</option>

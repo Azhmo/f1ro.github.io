@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <div class="season" *ngFor='let season of seasons'>
+    <p>{{season.name}}</p>
+    <p>Drivers Champion</p>
+    <app-card [drivers]="[season.driversChampion]">
+    </app-card>
+    <p>Constructors Champions</p>
+    <app-card [drivers]="season.constructorsChampions">
+    </app-card>
+  </div>
+</div>

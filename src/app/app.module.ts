@@ -25,6 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DriverDetailsComponent } from './adm/driver-details/driver-details.component';
 import { ListDriversComponent } from './adm/list-drivers/list-drivers.component';
 import { ListTracksComponent } from './adm/list-tracks/list-tracks.component';
+import { HallOfFameComponent } from './hall-of-fame/hall-of-fame.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ListTracksComponent } from './adm/list-tracks/list-tracks.component';
     DriverDetailsComponent,
     ListDriversComponent,
     ListTracksComponent,
+    HallOfFameComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, MatProgressSpinnerModule],
   providers: [HttpService],

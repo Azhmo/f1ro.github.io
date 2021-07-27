@@ -13,6 +13,7 @@ import { IncidentReportComponent } from './incident-report/incident-report.compo
 import { DriverDetailsComponent } from './adm/driver-details/driver-details.component';
 import { ListDriversComponent } from './adm/list-drivers/list-drivers.component';
 import { ListTracksComponent } from './adm/list-tracks/list-tracks.component';
+import { HallOfFameComponent } from './hall-of-fame/hall-of-fame.component';
 
 const routes: Routes = [
   { path: 'standings', component: StandingsComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'update', component: UpdateStandingsComponent },
   { path: 'random', component: RandomTeamComponent },
   { path: 'penalties', component: PenaltiesComponent },
+  { path: 'hall-of-fame', component: HallOfFameComponent },
   { path: 'logo', component: LogoComponent },
   { path: 'incidents', component: IncidentReportComponent },
   { path: '', component: HomeComponent },

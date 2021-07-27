@@ -2,7 +2,7 @@
   [ngClass]="{ 'team-card': f1Team, 'presentational': isPresentational }">
   <p class='position'>{{position}}</p>
   <div *ngIf='gain !== 0' class='gain' [ngClass]=" { down: gain < 0, up: gain> 0 }">
-    <span class="arrow"></span>{{ showGain(gain) || "-" }}
+    <span class="arrow"></span>{{ showGain(gain) || "" }}
   </div>
   <div class='drivers-wrapper'>
     <div *ngFor='let driver of drivers' class='name-wrapper'>

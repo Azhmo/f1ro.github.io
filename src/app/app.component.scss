@@ -3,3 +3,9 @@
   margin-bottom: 50px;
   display: inline-block;
 }
+
+@media screen and (max-width: 475px) {
+  .app {
+    margin-top: 125px;
+  }
+}

@@ -7,7 +7,7 @@ export interface Player {
 export type F1Team =
   | 'Mercedes'
   | 'Ferrari'
-  | 'RedBull'
+  | 'Red Bull'
   | 'Renault'
   | 'McLaren'
   | 'RacingPoint'

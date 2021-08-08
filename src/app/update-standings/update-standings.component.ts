@@ -172,12 +172,6 @@ export class UpdateStandingsComponent implements OnInit {
         team: undefined,
         points: 1,
       },
-      {
-        position: 'Bonus no penalties',
-        name: '',
-        team: undefined,
-        points: 1,
-      },
     ];
   }
 
@@ -204,34 +198,29 @@ export class UpdateStandingsComponent implements OnInit {
         (result) => result.position == player.currentRacePosition
       );
 
-      if (player.hasFastestLap) {
-        const fasterLapRaceResult = this.results.find((result) => result.position === 'Fastest lap')
-        raceResult.points += 1;
-        fasterLapRaceResult.name = player.name;
-        fasterLapRaceResult.team = player.team !== 'Res' ? player.team : player.provisionalTeam;;
-      }
-
-      if (player.hasBonusPoint) {
-        const bonusPointRaceResult = this.results.find((result) => result.position === 'Bonus no penalties')
-        raceResult.points += 1;
-        bonusPointRaceResult.name = player.name;
-        bonusPointRaceResult.team = player.team !== 'Res' ? player.team : player.provisionalTeam;;
-      }
-
-      if (player.penaltyPoints > 3 || player.nextRacePenalty.indexOf('ban') > -1) {
-        player.isCleanDriver = false;
-        player.isPotentialCleanDriver = false;
-      }
-
-      if (player.hasCleanRace) {
-        player.consecutiveCleanRaces++;
-        if (player.consecutiveCleanRaces === 3 && !player.isCleanDriver && player.isPotentialCleanDriver) {
-          player.isCleanDriver = true;
-        }
-      } else player.consecutiveCleanRaces = 0;
-
-      const teamRaceResult = this.teams.find((team) => team.name === (player.team !== 'Res' ? player.team : player.provisionalTeam));
       if (raceResult) {
+
+        if (player.hasFastestLap) {
+          const fasterLapRaceResult = this.results.find((result) => result.position === 'Fastest lap')
+          raceResult.points += 1;
+          fasterLapRaceResult.name = player.name;
+          fasterLapRaceResult.team = player.team !== 'Res' ? player.team : player.provisionalTeam;;
+        }
+
+        if (player.penaltyPoints > 3 || player.nextRacePenalty.indexOf('ban') > -1) {
+          player.isCleanDriver = false;
+          player.isPotentialCleanDriver = false;
+        }
+
+        if (player.hasCleanRace) {
+          player.consecutiveCleanRaces++;
+          if (player.consecutiveCleanRaces === 3 && !player.isCleanDriver && player.isPotentialCleanDriver) {
+            player.isCleanDriver = true;
+          }
+        } else player.consecutiveCleanRaces = 0;
+
+        const teamRaceResult = this.teams.find((team) => team.name === (player.team !== 'Res' ? player.team : player.provisionalTeam));
+
         raceResult.name = player.name;
         raceResult.team = player.team !== 'Res' ? player.team : player.provisionalTeam;
         //update player
@@ -250,7 +239,6 @@ export class UpdateStandingsComponent implements OnInit {
       );
       player.gain = oldPlayerIndex - index;
       player.hasFastestLap = false;
-      player.hasBonusPoint = false;
       player.hasCleanRace = false;
       player.currentRacePosition = undefined;
       player.provisionalTeam = undefined;

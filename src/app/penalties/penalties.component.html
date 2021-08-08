@@ -3,27 +3,22 @@
     <span>Players in red are not elligible for clean driver this season</span>
     <table>
       <tr>
-        <th width="20%">Gamertag</th>
-        <th width="20%">Team</th>
-        <th width="10%">Penalty points</th>
-        <th width="25%">Consecutive clean races</th>
-        <th width="25%">Current penalties / warnings</th>
+        <th width="30%">Gamertag</th>
+        <th width="15%">Penalty points</th>
+        <th width="10%">Consecutive clean races</th>
+        <th width="30">Current penalties / warnings</th>
+        <th width="15%">Races</th>
       </tr>
       <tr *ngFor="let player of players; index as i">
         <td class='nameContainer'>
           <img *ngIf="player.isCleanDriver" class='clean' src="assets/clean.png" />
           <span [ngClass]="{'notElligible': !player.isPotentialCleanDriver}">{{ player.name }}</span>
         </td>
-        <td *ngIf="player.team !== 'Res'">
-          <img class="car" src="assets/{{ player.team }}.png" />
-        </td>
-        <td *ngIf="player.team === 'Res'">
-          <span [ngClass]="{'notElligible': !player.isPotentialCleanDriver}">{{player.team}}</span>
-        </td>
         <td><span [ngClass]="{'notElligible': !player.isPotentialCleanDriver}">{{ player.penaltyPoints }}</span></td>
         <td><span [ngClass]="{'notElligible': !player.isPotentialCleanDriver}">{{ player.consecutiveCleanRaces }}</span>
         </td>
         <td><span [ngClass]="{'notElligible': !player.isPotentialCleanDriver}">{{ player.nextRacePenalty }}</span></td>
+        <td><span [ngClass]="{'notElligible': !player.isPotentialCleanDriver}">{{ player.raceInvolvement }}</span></td>
       </tr>
     </table>
   </div>

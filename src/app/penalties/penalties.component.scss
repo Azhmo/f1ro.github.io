@@ -4,6 +4,8 @@
   align-items: flex-start;
 
   table {
+    width: 100%;
+
     td {
       color: $text-primary;
     }
@@ -15,6 +17,8 @@
 
   .nameContainer {
     text-align-last: left;
+    display: flex;
+    align-items: center;
   }
 
   .clean {

@@ -8,6 +8,7 @@
     <div *ngFor='let driver of drivers' class='name-wrapper'>
       <img class='country' src={{getCountryFlagFromCode(driver.country)}} />
       <p>{{driver.name}}</p>
+      <img *ngIf="driver.isCleanDriver" class='clean' src="assets/clean.png" />
     </div>
   </div>
   <div class='points-wrapper'>
